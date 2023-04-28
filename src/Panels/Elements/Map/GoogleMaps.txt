@@ -1,0 +1,64 @@
+import React from 'react';
+import { GoogleApiWrapper, InfoWindow, Map, Marker } from 'google-maps-react';
+
+class GoogleMapsContainer extends React.Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      showingInfoWindow: false,
+      activeMarker: {},
+      selectedPlace: {}
+    }
+    // binding this to event-handler functions
+    this.onMarkerClick = this.onMarkerClick.bind(this);
+    this.onMapClick = this.onMapClick.bind(this);
+  }
+  onMarkerClick = (props, marker, e) => {
+    this.setState({
+      selectedPlace: props,
+      activeMarker: marker,
+      showingInfoWindow: true
+    });
+  }
+  onMapClick = (props) => {
+    if (this.state.showingInfoWindow) {
+      this.setState({
+        showingInfoWindow: false,
+        activeMarker: null
+      });
+    }
+  }
+  render() {
+    const style = {
+      width: '800px',
+      height: '600px'
+    }
+    return (
+      <Map
+        item
+        xs = { 4 }
+        google = { this.props.google }
+        onClick = { this.onMapClick }
+        zoom = { 16 }
+        initialCenter = {{ lat: this.props.latitude, lng: this.props.longitude }}
+      >
+        <Marker
+          onClick = { this.onMarkerClick }
+          title = { 'AIRFORCE1' }
+          position = {{ lat: this.props.latitude, lng: this.props.longitude }}
+          name = { 'AIRFORCE1' }
+        />
+        <InfoWindow
+          marker = { this.state.activeMarker }
+          visible = { this.state.showingInfoWindow }
+        >
+          <h4>AIRFORCE1</h4>
+        </InfoWindow>
+      </Map>
+    );
+  }
+}
+
+export default GoogleApiWrapper({
+  apiKey: 'AIzaSyCMIsV3mLippggy6MdaPuxmAX4POe_RMss'
+})(GoogleMapsContainer)

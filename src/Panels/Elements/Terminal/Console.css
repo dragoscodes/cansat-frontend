@@ -1,0 +1,28 @@
+.console {
+    background-color: black;
+    color: white;
+    font-family: monospace;
+    height: 300px;
+    overflow: scroll;
+    padding: 10px;
+  }
+  
+  .console-line {
+    margin-bottom: 5px;
+  }
+  
+  .console-input {
+    display: flex;
+  }
+  
+  .console-prompt {
+    color: green;
+    margin-right: 5px;
+  }
+  .input {
+    background-color: transparent;
+    border: none;
+  }
+  .input:focus {
+    outline: none;
+  }
