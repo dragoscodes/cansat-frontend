@@ -38,7 +38,7 @@ useEffect(() => {
   }
 
   async function onData(info) {
-    console.log(info);
+    //console.log(info);
     setData(info);
     await sleep(100);
   }

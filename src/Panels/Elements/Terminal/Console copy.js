@@ -96,9 +96,7 @@ function Console(params) {
 
     function handleKeyDown(event) {
         if (event.key === 'Enter') {
-            var out3 = output;
-            out3.push(input);
-            setOutput(out3);
+            setOutput([...output, input]);
             console.log(output);
             axios.get('http://localhost:3005/cli?command=' + input,)
                 .then(function (response) {
