@@ -53,7 +53,7 @@ export const data = {
       label: 'Altitude',
       data: labels.map(() => faker.datatype.number({ min: 50, max: 600 })),
       borderColor: '#23dd96',
-      backgroundColor: '#25c6db',
+      backgroundColor: 'rgba(0, 0, 0, 0)',
     }
   ],
 };
@@ -70,7 +70,7 @@ export function Altitude() {
         2.3m/s
       </StatHelpText>
     </Stat>   
-    <Line style={{ height: "250px", width: "400px" }} options={options} data={data} />;
+    <Line style={{ height: "250px", width: "400px" }} options={options} data={data} />
   </>
 
 }

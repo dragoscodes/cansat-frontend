@@ -12,7 +12,7 @@ import React, {useState} from 'react'
 export default function MissionButton() {
     const { isOpen, onOpen, onClose } = useDisclosure()
     const cancelRef = React.useRef()
-    const [selected, setSelected] = useState('operational')
+    const [selected, setSelected] = useState('Operational')
     const [choice, setChoice] = useState(null);
     //Get the value of the chakra ui select element
     const handleChange = (e) => {
@@ -26,15 +26,15 @@ export default function MissionButton() {
     } 
 
     return (<><Select size='md'
-        bg={selected=="operational" ? '#09a013' : (selected=="low-power" ? '#f2cf24' : '#ce1414')}
-        borderColor={selected=="operational" ? '#09a013' : (selected=="low-power" ? '#f2cf24' : '#ce1414')}
+        bg={selected=="Operational" ? '#09a013' : (selected=="Low Power" ? '#f2cf24' : '#ce1414')}
+        borderColor={selected=="Operational" ? '#09a013' : (selected=="Low-power" ? '#f2cf24' : '#ce1414')}
         color='black'
         onChange={(e)=>{handleChange(e)}}
         value={selected}
     >
-        <option value='operational'>Operational</option>
-        <option value='low-power'>Low Power</option>
-        <option value='recovery'>Recovery</option>
+        <option value='Operational'>Operational</option>
+        <option value='Low Power'>Low Power</option>
+        <option value='Recovery'>Recovery</option>
     </Select>
         <AlertDialog
             isOpen={isOpen}

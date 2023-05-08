@@ -11,6 +11,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
+import './Voltage.css'
 
 ChartJS.register(
   CategoryScale,
@@ -43,9 +44,19 @@ export const data = {
   datasets: [
     {
       label: 'Battery Voltage',
-      data: labels.map(() => faker.datatype.number({ min: -4, max: 8 })),
+      data: labels.map(() => faker.datatype.number({ min: 14, max: 16.8})),
       borderColor: '#23dd96',
       backgroundColor: '#25c6db',
+    },
+    {
+      type: 'line',
+      label: 'My Line',
+      data: labels.map(() => 14.6), //Use emergency treshold here
+      fill: false,
+      borderColor: '#FF0000',
+      borderWidth: 1,
+      pointRadius: 0,
+      borderDash: [10,5]
     }
   ],
 };
@@ -53,6 +64,6 @@ export const data = {
 export function Voltage() {
 //Return the line chart, including the definition of the chart's axis
 
-  return <Line style={{height: "250px", width: "400px"}} options={options} data={data} />;
+  return <Line className="voltage" style={{height: "250px", width: "400px"}} options={options} data={data} />;
 
 }

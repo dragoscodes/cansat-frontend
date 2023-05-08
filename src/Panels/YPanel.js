@@ -3,7 +3,7 @@ import MissionButton from "./Elements/MissionControl/MissionButton.js";
 
 export default function YPanel() {
     return <>
-    <Voltage />
+    <Voltage style={{height: "250px", width: "400px"}}/>
     <MissionButton />
     </>;
 }

@@ -2,11 +2,21 @@
     background-color: black;
     color: white;
     font-family: monospace;
-    height: 300px;
+    height: 500px;
     overflow: scroll;
     padding: 10px;
-  }
+    text-align: left;
+    overflow-y: auto;
+    word-wrap: break-word;
+    white-space: pre-wrap;
+    }
   
+    .check {
+      float: left;
+    }
+
+
+
   .console-line {
     margin-bottom: 5px;
   }

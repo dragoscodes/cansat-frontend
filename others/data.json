@@ -1,0 +1,56 @@
+{
+    "system": {
+      "current": 13.4,
+      "voltage": 16.5,
+      "current_accum": 0.1,
+      "run_time": 1360.2,
+      "mission_status": "Going to target location",
+      "fc_status": "Go to target mode",
+      "lte_active": true,
+      "signal_strength": 95.3,
+      "bmp390_errors": 84,
+      "shtc3_errors": 10,
+      "iis2mdc_errors": 5,
+      "modem_errors": 2,
+      "cam_frame_count": 530
+    },
+    "sensors": {
+      "motherboard": {
+        "air_pressure": 974.35,
+        "relative_humid": 45,
+        "temperatures": {
+          "pres_sensor": 17.6,
+          "humid_sensor": 18.2,
+          "cpu": 33,
+          "modem": 40
+        }
+      },
+      "flight_controller": {
+        "cpu_temp": 16.5,
+        "imu": {
+          "accel": [0.43, -0.15, 1.18], //Astea sunt in Guri
+          "gyro": [15, -2, 50],
+          "mag": [60, 5, -600]
+        }
+      }
+    },
+    "config": {
+      "emergency_voltage_thres": 14.6,
+      "target_location": {
+        "lat": 40.3858372,
+        "long": 24.2948573,
+        "altitude": 200
+      }
+    },
+    "navigation": {
+      "last_gps_fix": 1359.8,
+      "gps_lat": 40.3851039,
+      "gps_long": 24.2949045,
+      "altitude": 230.45,
+      "est_lat": 40.3851045, //ASTEA LE FOLOSESC
+      "est_long": 24.2949048, //ASTEA LE FOLOSESC
+      "roll": -30.038,
+      "pitch": 4.353,
+      "yaw": 278.432
+    }
+}

@@ -1,4 +1,3 @@
-import Terminal from './Elements/Terminal/Terminal.js'
 import Battery from './Elements/Battery/Battery.js'
 import Signal from './Elements/Signal/Signal.js'
 import Console from './Elements/Terminal/Console.js'

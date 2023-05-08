@@ -1,0 +1,10 @@
+Schimbat UI 
+Aflat la ce trebuie charts, la ce nu trebuie etc.
+Rotation + time pt cesium
+Link din cesium la API pt a vedea pachetul de date din acel moment (+db)
+salvat ultiemle x pachete si trimis in caz ca nu mai e net
+laxy load tabs chakra
+inca 4 bytes dupa jpeg - pt timestamp
+status de la drona si la mission status
+
+meshroom
