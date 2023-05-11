@@ -5,7 +5,7 @@ import ZPanel from './Panels/ZPanel';
 import UPanel from './Panels/UPanel';
 import VPanel from './Panels/VPanel';
 
-
+//If you want to defer rendering of each tab until that tab is selected, you can use the isLazy prop.
 function TabMenu(props) {
   return (
     <Tabs size="md" align="center">

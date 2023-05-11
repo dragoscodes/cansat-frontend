@@ -14,8 +14,8 @@ export default function VPanel() {
             <GridItem rowSpan={3} colSpan={1} bg='#2C333D' >
                 <Voltage />
                 </GridItem>
-            <GridItem rowSpan={6} colSpan={2}  bg='papayawhip' >
-                <Map styleSettings={{"height": "600px", "width": "800px"}}/>
+            <GridItem rowSpan={7} colSpan={2}  bg='papayawhip' >
+                <Map styleSettings={{"height": "100%", "width": "100%"}}/>
             </GridItem>
             <GridItem colSpan={1} bg='papayawhip'>
                 <Signal />

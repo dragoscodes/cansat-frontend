@@ -1,14 +1,14 @@
 {
     "system": {
       "current": 13.4,
-      "voltage": 16.5,
-      "current_accum": 0.1,
+      "voltage": 16.5, 
+      "current_accum": 0.1, //Asta e in Ah (Amperi ora) - il afisez doar asa
       "run_time": 1360.2,
       "mission_status": "Going to target location",
       "fc_status": "Go to target mode",
       "lte_active": true,
-      "signal_strength": 95.3,
-      "bmp390_errors": 84,
+      "signal_strength": 95.3, //Grafic vs timp
+      "bmp390_errors": 84, 
       "shtc3_errors": 10,
       "iis2mdc_errors": 5,
       "modem_errors": 2,
@@ -16,17 +16,17 @@
     },
     "sensors": {
       "motherboard": {
-        "air_pressure": 974.35,
+        "air_pressure": 974.35,  // Grafic timp si chestie de genul
         "relative_humid": 45,
         "temperatures": {
           "pres_sensor": 17.6,
           "humid_sensor": 18.2,
           "cpu": 33,
           "modem": 40
-        }
+        } // Grafic vs timp - 4 linii pe un grafic
       },
       "flight_controller": {
-        "cpu_temp": 16.5,
+        "cpu_temp": 16.5, // Grafic vs timp
         "imu": {
           "accel": [0.43, -0.15, 1.18], //Astea sunt in Guri
           "gyro": [15, -2, 50],
