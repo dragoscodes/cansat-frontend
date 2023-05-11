@@ -1,4 +1,4 @@
 module.exports = {
-    host: 'cansat.dragos.codes',
+    host: 'localhost',
     socket_port: 3041,
 }

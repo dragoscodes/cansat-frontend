@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -37,33 +37,45 @@ export const options = {
   },
 };
 
-const labels = Array.from({ length: 30 }, (_, i) => i + 1);
 
-export const data = {
-  labels,
-  datasets: [
-    {
-      label: 'Battery Voltage',
-      data: labels.map(() => faker.datatype.number({ min: 14, max: 16.8})),
-      borderColor: '#23dd96',
-      backgroundColor: '#25c6db',
-    },
-    {
-      type: 'line',
-      label: 'My Line',
-      data: labels.map(() => 14.6), //Use emergency treshold here
-      fill: false,
-      borderColor: '#FF0000',
-      borderWidth: 1,
-      pointRadius: 0,
-      borderDash: [10,5]
+export function Voltage(params) {
+
+  var voltages = [17, 16, 15, 14, 13, 12, 11, 10, 9, 8];
+  var labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  //const [voltages, setVoltages] = useState([17, 16, 15, 14, 13, 12, 11, 10, 9, 8]);
+  //const [labels, setLabels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+
+  useEffect(() => {
+    if (params.data) {
+      voltages.push(params.data.system.voltage);
+      labels.push(labels.length + 1)
     }
-  ],
-};
+    //Return the line chart, including the definition of the chart's axis
+  }, [params.data])
 
-export function Voltage() {
-//Return the line chart, including the definition of the chart's axis
+  var data = {
+    labels,
+    datasets: [
+      {
+        label: 'Battery Voltage',
+        data: voltages,
+        borderColor: '#23dd96',
+        backgroundColor: '#25c6db',
+      },
+      {
+        type: 'line',
+        label: 'My Line',
+        data: voltages.map(() => 14.6), //Use emergency treshold here
+        fill: false,
+        borderColor: '#FF0000',
+        borderWidth: 1,
+        pointRadius: 0,
+        borderDash: [10, 5]
+      }
+    ],
+  };
 
-  return <Line className="voltage" style={{height: "250px", width: "400px"}} options={options} data={data} />;
+
+  return <Line className="voltage" style={{ height: "250px", width: "400px" }} options={options} data={data} />;
 
 }

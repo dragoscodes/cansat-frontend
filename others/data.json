@@ -2,7 +2,7 @@
     "system": {
       "current": 13.4,
       "voltage": 16.5, 
-      "current_accum": 0.1, //Asta e in Ah (Amperi ora) - il afisez doar asa
+      "current_accum": 0.1, //Asta sae in Ah (Amperi ora) - il afisez doar a
       "run_time": 1360.2,
       "mission_status": "Going to target location",
       "fc_status": "Go to target mode",

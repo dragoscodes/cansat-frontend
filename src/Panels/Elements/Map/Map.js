@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Viewer, Entity, PointGraphics, EntityDescription, Cesium3DTileset, Clock, CameraLookAt, CameraFlyTo, Model, ModelGraphics, PolylineGraphics } from "resium";
-import { Cesium, Ion, Cartesian3, createWorldTerrain, IonResource, JulianDate, ClockRange, ClockStep, createOsmBuildings, CesiumIon, TimeInterval, PolylineArrowMaterialProperty, Color, createWorldTerrainAsync, TimeIntervalCollection } from "cesium";
+import { Viewer, Entity, PointGraphics, EntityDescription, Cesium3DTileset, Clock, CameraLookAt, CameraFlyTo, Model, ModelGraphics, PolylineGraphics} from "resium";
+import { Cesium, Ion, Cartesian3, createWorldTerrain, IonResource, JulianDate, ClockRange, ClockStep, createOsmBuildings, CesiumIon, TimeInterval, PolylineArrowMaterialProperty, Color, createWorldTerrainAsync,  TimeIntervalCollection, HeadingPitchRoll } from "cesium";
 
 Ion.defaultAccessToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIyODBiMTMyOS02ZWVlLTQxMjUtYjZjOC02MzJjNmExZDA1ODkiLCJpZCI6MTMwNTI3LCJpYXQiOjE2Nzk3NjQ5MjZ9.bFakh-tM-OQsbniWDVOt6Zfepw3Dm2azxkDYPh8bbxI";
 const latestPosition = Cartesian3.fromDegrees(10.01519, 56.83041, 150);
@@ -32,7 +32,7 @@ function Map({ styleSettings }) {
     const timeIntervals = new TimeIntervalCollection();
 
     const start = JulianDate.fromIso8601('2023-05-10T00:00:00Z');
-    const stop = JulianDate.fromIso8601('2023-05-10T23:59:59Z');
+    const stop = JulianDate.fromIso8601('2023-05-13T23:59:59Z');
     const interval = new TimeInterval({
       start,
       stop
@@ -109,7 +109,7 @@ function Map({ styleSettings }) {
             </Entity>
 
 
-            <Entity position={Cartesian3.fromDegrees(10.02219, 56.83041, 190)} name="Tokyo" availability={timeIntervals}>
+            <Entity position={Cartesian3.fromDegrees(10.02219, 56.83041, 190)} name="Tokyo" availability={timeIntervals} orientation={HeadingPitchRoll.fromDegrees(278.432, 4.353, -30.383)}>
                 <ModelGraphics
                     uri={'/model_air.glb'}
                     minimumPixelSize={128}

@@ -5,9 +5,6 @@ import { io } from 'socket.io-client';
 import config from './config.js'
 
 function App() {
-
-  console.log(config)
-
   function sleep(ms) {
     return new Promise(resolve => setTimeout(resolve, ms));
   }
@@ -17,14 +14,13 @@ function App() {
   const [data, setData] = useState(null);
   const [video, setVideo] = useState(null);
   const [response, setResponse] = useState(null);
-  const [loading, setLoading] = useState(true);
-  const [error, setError] = useState(false);
+
   const [isConnected, setIsConnected] = useState(false);
 
   useEffect(() => {
     if (!socketRef.current) {
       console.log(isConnected);
-      socketRef.current = io(`http://localhost:${config.socket_port}`);
+      socketRef.current = io(`http://${config.host}:${config.socket_port}`);
     }
   }, []);
 
@@ -111,7 +107,6 @@ function App() {
     }
     )
 
-    setResponse('fahiufahfkjshkjafs');
   }, []);
 
   useEffect(() => {
@@ -126,6 +121,7 @@ function App() {
     }
 
     function onResponse(info) {
+      console.log('recieved');
       console.log(info);
       updateResponse(info);
     }

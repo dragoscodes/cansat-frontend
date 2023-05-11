@@ -24,7 +24,7 @@ function Console(params) {
 
     var da = '';
 
-    function update(info) {
+    /*function update(info) {
         if (info.endsWith("\n")) {
             da += info;
             var out2 = output;
@@ -39,20 +39,22 @@ function Console(params) {
         }
 
         console.log(string, output)
-
-    }
+    }*/
 
     useEffect(() => {
         console.log(params.response);
-        if (params.response.endsWith("\n")) {
-            da = da + params.response;
-            setOutput([...output, '> ' + da]);
-            da = '';
-            setString('');
-        } else {
-            da = da + params.response;
-            setString(da);
+        if(params.response) {
+            if (params.response.endsWith("\n")) {
+                da = da + params.response;
+                setOutput([...output, '> ' + da]);
+                da = '';
+                setString('');
+            } else {
+                da = da + params.response;
+                setString(da);
+            }
         }
+        
     }, [params])
 
 
@@ -75,6 +77,17 @@ function Console(params) {
             out3.push(input);
             setOutput(out3);
             console.log(output);
+            //Send a get request to the server
+            axios.get('http://localhost:4000/cli', {
+                params: {
+                    command: input
+                }
+            }).then((response) => {
+                console.log(response.data);
+            }).catch((error) => {
+                console.log(error);
+            });
+
 
             setInput('');
 

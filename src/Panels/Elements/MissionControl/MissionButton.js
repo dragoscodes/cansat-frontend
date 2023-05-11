@@ -8,6 +8,7 @@ import {
     AlertDialogOverlay,
   } from '@chakra-ui/react'
 import React, {useState} from 'react'
+import axios from 'axios'
 
 export default function MissionButton() {
     const { isOpen, onOpen, onClose } = useDisclosure()
@@ -21,7 +22,18 @@ export default function MissionButton() {
     }
 
     const sendMission = () => {
-        //Send the mission to the server
+        //Make a get request to /cli
+        axios.get('http://localhost:4000/cli', {
+            params: {
+                command: 'opmode '+choice
+            }
+        }).then((response) => {
+            console.log(response.data);
+        }).catch((error) => {
+            console.log(error);
+        });
+
+        
         setSelected(choice);
     } 
 

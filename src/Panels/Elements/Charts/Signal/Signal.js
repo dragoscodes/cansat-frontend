@@ -31,22 +31,22 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Battery Current',
+      text: 'Signal Strength',
       position: 'bottom',
     },
   },
 };
 
 
-export function Current(params) {
+export function Signal(params) {
 
   
-  const [dataset, setData] = useState([17, 16, 15, 14, 13, 12, 11, 10, 9, 8]);
+  const [dataset, setData] = useState([99,98,12,88,55,44,33,22,11,10]);
   const [labels, setLabels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
   useEffect(() => {
     if (params.data) {
-      setData([...dataset, params.data.system.current])
+      setData([...dataset, params.data.system.signal_strength])
       setLabels([...labels, labels.length + 1])
     }
     //Return the line chart, including the definition of the chart's axis
@@ -56,25 +56,15 @@ export function Current(params) {
     labels,
     datasets: [
       {
-        label: 'Battery Current',
+        label: 'Signal Strength',
         data: dataset,
         borderColor: '#23dd96',
         backgroundColor: '#25c6db',
       },
-      {
-        type: 'line',
-        label: 'My Line',
-        data: dataset.map(() => 14.6), //Use emergency treshold here
-        fill: false,
-        borderColor: '#FF0000',
-        borderWidth: 1,
-        pointRadius: 0,
-        borderDash: [10, 5]
-      }
     ],
   };
 
 
-  return <Line className="current" style={{ height: "250px", width: "400px" }} options={options} data={data} />;
+  return <Line className="signal" style={{ height: "250px", width: "400px" }} options={options} data={data} />;
 
 }
