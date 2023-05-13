@@ -14,6 +14,8 @@ function App() {
   const [data, setData] = useState(null);
   const [video, setVideo] = useState(null);
   const [response, setResponse] = useState(null);
+
+  const [info, setInfo] = useState(null);
   
   const [isConnected, setIsConnected] = useState(false);
 
@@ -25,16 +27,19 @@ function App() {
   function updateResponse(res) {
     response_recieved = res;
     setResponse(response_recieved);
+    console.log(response_recieved);
   }
 
   function updateVideo(res) {
     video_recieved = res;
     setVideo(video_recieved);
+    console.log(video_recieved);
   }
 
   function updateData(res) {
     data_recieved = res;
     setData(data_recieved);
+    console.log(data_recieved);
   }
 
   useEffect(() => {
@@ -51,23 +56,28 @@ function App() {
       }
   
       function onResponse(info) {
-        updateResponse(info);
+        console.log('recieved');
+        setInfo(info);
+        //console.log(info);
+        //updateResponse(info);
       }
   
       function onVideo(info) {
         console.log(info);
-        updateVideo(info);
+        //updateVideo(info);
       }
   
       function onData(info) {
-        updateData(info);
+        console.log('recieved');
+        //console.log(info);
+        //updateData(info);
       }
   
       socket.on('connect', onConnect);
       socket.on('disconnect', onDisconnect);
       socket.on('video', onVideo);
       socket.on('data', onData);
-      socket.on('response', onResponse);
+      socket.on('response', onData);
   
       return () => {
         socket.off('connect', onConnect);
@@ -84,9 +94,6 @@ function App() {
 
 
   useEffect(() => {
-    //Read data from the image file and set it to the video stat{
-
-
     setData({
       "system": {
         "current": 13.4,
@@ -135,9 +142,9 @@ function App() {
         "last_gps_fix": 1359.8,
         "gps_lat": 40.3851039,
         "gps_long": 24.2949045,
-        "altitude": 260,
-        "est_lat": 45.419071,
-        "est_long": 22.238729,
+        "altitude": 630.45,
+        "est_lat": 40.3851045,
+        "est_long": 24.2949048,
         "roll": -30.038,
         "pitch": 4.353,
         "yaw": 278.432
@@ -147,7 +154,7 @@ function App() {
 
   }, []);
 
-  useEffect(() => {
+  /*useEffect(() => {
     const socket = socketRef.current;
 
     function onConnect() {
@@ -159,22 +166,28 @@ function App() {
     }
 
     function onResponse(info) {
-      updateResponse(info);
+      console.log('recieved');
+      setInfo(info);
+      //console.log(info);
+      //updateResponse(info);
     }
 
     function onVideo(info) {
-      updateVideo(info);
+      console.log(info);
+      //updateVideo(info);
     }
 
     function onData(info) {
-      updateData(info);
+      console.log('recieved');
+      //console.log(info);
+      //updateData(info);
     }
 
     socket.on('connect', onConnect);
     socket.on('disconnect', onDisconnect);
     socket.on('video', onVideo);
     socket.on('data', onData);
-    socket.on('response', onResponse);
+    socket.on('response', onData);
 
     return () => {
       socket.off('connect', onConnect);
@@ -184,7 +197,7 @@ function App() {
       socket.off('response', onResponse);
       socket.removeAllListeners();
     };
-  }, []);
+  }, []);*/
 
   return (
     <>

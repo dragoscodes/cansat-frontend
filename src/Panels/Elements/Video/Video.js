@@ -14,35 +14,25 @@ import io from "socket.io-client";
 
 }*/
 
-export default function ImageStream() {
+export default function ImageStream(props) {
+  const [image, setImage] = useState();
 
-  function ab2str(buf) {
-    return String.fromCharCode.apply(null, new Uint8Array(buf));
-  }
-  let k=0;
-  /*const socket = io.connect('http://localhost:3030');
+  // Assume you have received the image buffer as 'imageBuffer' from the server
+  useEffect(() => {
+    if(props.video) {
+    //var blob = new Blob([props.video], { type: 'image/jpeg' });
+   // var imageUrl = URL.createObjectURL(blob);
+    //setImage(imageUrl);
+  
+   setImage(props.video);
+    }
+  }, [props.video])
 
-  socket.on('image', (image) => {
-
-    k++;
-    console.log(k);
-
-    //Convert the array buffer image to base64
-    //let image2 = new Buffer.from(image).toString('base64');
-
-    //var enc = new TextDecoder("base64");
-    //console.log(enc.decode(arr));
-
-    const image2 = ab2str(image);
-
-    // console.log('data', data);
-    const img = document.getElementById('image');
-    img.src = `data:image/jpeg;base64,${image}`;
-  });*/
+  //I recieved the image data from the server as a buffer and trasnform it to an image and add it to the image state
 
   return (
     <div>
-      <img src="https://placehold.co/600x400" id="image" />
+      <img src={image ? 'data:image/jpeg;base64,'+image : "https://placehold.co/800x600" } id="image" />
     </div>
   )
 }

@@ -76,7 +76,16 @@ const ArrowScene = (props) => {
     )
 }
 
-const ModelViewer = (props) => {
+export const ModelViewer = (props) => {
+
+    const [rotation, setRotation] = useState([0, 0, 0]);
+
+    useEffect(() => {
+        if (props.data) {
+            setRotation([props.data.navigation.roll, props.data.navigation.pitch, props.data.navigation.yaw]);
+        }
+    }, [props.data]);
+
     return (
         <Canvas shadows colorManagement dpr={[1, 2]} camera={{ fov: 25, position: [0, 0, 8] }}>
         <color attach="background" args={['#FFFFFF']} />
@@ -84,7 +93,7 @@ const ModelViewer = (props) => {
         <directionalLight position={[-10, 20, 10]} />
         <PresentationControls snap global zoom={1} rotation={[Math.PI / 6, 0, 0]}>
             <group position-y={-160} position-z={-270} dispose={null} rotation={[0, 3 * Math.PI / 4, 0]}>
-                <group rotation={[0, 0, 0]}>
+                <group rotation={rotation}>
                     <Quadcopter />
                 </group>
             </group>

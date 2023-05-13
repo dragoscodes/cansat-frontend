@@ -42,7 +42,7 @@ function Console(params) {
     useEffect(() => {
         if (!socketRef.current) {
             console.log(isConnected);
-            socketRef.current = io('http://cansat.dragos.codes:3041');
+            socketRef.current = io('http://localhost:3041');
         }
     }, []);
 
@@ -58,6 +58,7 @@ function Console(params) {
         }
 
         function onData(info) {
+            console.log('data')
             console.log(info);
             //Console log date in day hours time
             var date = new Date();
@@ -74,12 +75,12 @@ function Console(params) {
 
         socket.on('connect', onConnect);
         socket.on('disconnect', onDisconnect);
-        socket.on('response', onData);
+        socket.on('z', onData);
 
         return () => {
             socket.off('connect', onConnect);
             socket.off('disconnect', onDisconnect);
-            socket.off('response', onData);
+            socket.off('z', onData);
             socket.removeAllListeners();
         };
     }, []);

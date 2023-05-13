@@ -3,19 +3,20 @@ import { Progress } from '@chakra-ui/react'
 
 //https://codepen.io/timgomm/pen/NpRRZV - for bar with markers
 
-export default function MissionBar({ progress , status, FCstatus }) {
-    const time = 1102.5;
-    //Get the integer from time/60
-    //Get the remainder from time%60
-    //Display the time in the format of minutes:seconds
+export default function MissionBar(props) {
+    
+    if(props.data){
+        var time = props.data.system.run_time;
 
-
-
-    return(
-        <>
-                <Progress colorScheme='green' size='lg' value={progress} />
-                <h4>Latest update - runtime: {Math.floor(time/60)}:{Math.floor(time%60)}               Status: {status} FC Status: </h4>
-        </>
+        return(
+            <>
+                    <Progress colorScheme='green' size='lg' value={66} />
+                    <h4>Latest update - runtime: {Math.floor(time/60)}:{Math.floor(time%60)}               Status: {props.data.system.mission_status} FC Status: {props.data.system.fc_status}</h4>
+            </>
+        )
+    } else return (
+        <Progress colorScheme='green' size='lg' value={66} />
     )
+    
 }
 

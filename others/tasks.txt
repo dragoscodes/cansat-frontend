@@ -5,6 +5,26 @@ Link din cesium la API pt a vedea pachetul de date din acel moment (+db)
 salvat ultiemle x pachete si trimis in caz ca nu mai e net
 laxy load tabs chakra
 inca 4 bytes dupa jpeg - pt timestamp
-status de la drona si la mission status - op mode
 
 meshroom
+
+
+map.js
+change line between last element and latestpoz
+add telemetry data to map
+
+
+  function ab2str(buf) {
+    return String.fromCharCode.apply(null, new Uint8Array(buf));
+  } 
+    //let image2 = new Buffer.from(image).toString('base64');
+  useEffect(()=> {
+    if (props.video) {
+      setImage(ab2str(props.video));
+
+      // console.log('data', data);
+      const img = document.getElementById('image');
+      img.src = `data:image/jpeg;base64,${image}`;
+      console.log(props.data);
+    }
+  }, [props.video])

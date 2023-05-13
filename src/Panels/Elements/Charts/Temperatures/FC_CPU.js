@@ -11,7 +11,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import { faker } from '@faker-js/faker';
-import './Voltage.css'
+
 
 ChartJS.register(
   CategoryScale,
@@ -31,25 +31,23 @@ export const options = {
     },
     title: {
       display: true,
-      text: 'Battery Voltage',
+      text: 'FC CPU Temperature',
       position: 'bottom',
     },
   },
 };
 
 
-export function Voltage(params) {
-  var voltages = [17, 16, 15, 14, 13, 12, 11, 10, 9, 8];
-  var labels = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  const [voltageTreshold, setVoltageTreshold] = useState(null);
-  //const [voltages, setVoltages] = useState([17, 16, 15, 14, 13, 12, 11, 10, 9, 8]);
-  //const [labels, setLabels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
+export function FC(params) {
+
+  
+  const [dataset, setData] = useState([17, 16, 15, 14, 13, 12, 11, 10, 9, 8]);
+  const [labels, setLabels] = useState([1, 2, 3, 4, 5, 6, 7, 8, 9, 10]);
 
   useEffect(() => {
     if (params.data) {
-      voltages.push(params.data.system.voltage);
-      labels.push(labels.length + 1)
-      setVoltageTreshold(params.data.config.emergency_voltage_thres)
+      setData([...dataset, params.data.sensors.flight_controller.cpu_temp])
+      setLabels([...labels, labels.length + 1])
     }
     //Return the line chart, including the definition of the chart's axis
   }, [params.data])
@@ -58,15 +56,15 @@ export function Voltage(params) {
     labels,
     datasets: [
       {
-        label: 'Battery Voltage',
-        data: voltages,
+        label: 'FC CPU Temperature',
+        data: dataset,
         borderColor: '#23dd96',
         backgroundColor: '#25c6db',
       },
       {
         type: 'line',
         label: 'My Line',
-        data: voltages.map(() => voltageTreshold), //Use emergency treshold here
+        data: dataset.map(() => 14.6), //Use emergency treshold here
         fill: false,
         borderColor: '#FF0000',
         borderWidth: 1,
@@ -77,6 +75,6 @@ export function Voltage(params) {
   };
 
 
-  return <Line className="voltage" style={{ height: "100%", width: "100%" }} options={options} data={data} />;
+  return <Line className="temperature" style={{ height: "250px", width: "400px" }} options={options} data={data} />;
 
 }

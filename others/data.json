@@ -46,9 +46,9 @@
       "last_gps_fix": 1359.8,
       "gps_lat": 40.3851039,
       "gps_long": 24.2949045,
-      "altitude": 230.45,
-      "est_lat": 40.3851045, //ASTEA LE FOLOSESC
-      "est_long": 24.2949048, //ASTEA LE FOLOSESC
+      "altitude": 260.45,
+      "est_lat": 45.42027, //ASTEA LE FOLOSESC
+      "est_long": 22.252, //ASTEA LE FOLOSESC
       "roll": -30.038,
       "pitch": 4.353,
       "yaw": 278.432

@@ -61,20 +61,10 @@ export function Current(params) {
         borderColor: '#23dd96',
         backgroundColor: '#25c6db',
       },
-      {
-        type: 'line',
-        label: 'My Line',
-        data: dataset.map(() => 14.6), //Use emergency treshold here
-        fill: false,
-        borderColor: '#FF0000',
-        borderWidth: 1,
-        pointRadius: 0,
-        borderDash: [10, 5]
-      }
     ],
   };
 
 
-  return <Line className="current" style={{ height: "250px", width: "400px" }} options={options} data={data} />;
+  return <Line className="current" style={{ height: "100%", width: "100%" }}  options={options} data={data} />;
 
 }
